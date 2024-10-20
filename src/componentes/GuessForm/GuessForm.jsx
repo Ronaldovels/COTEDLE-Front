@@ -29,12 +29,12 @@ function GuessForm() {
   const characteristicLabels = {
     gender: 'Gender',
     filiation: 'Filiation',
-    race: 'Race',
+    occupation: 'Occupation',
+    age: 'Age',
+    year: 'Year',
+    studentClass: 'Student Class',
     hair_color: 'Hair color',
     eye_color: 'Eye color',
-    introducion_arc: 'Introduction Arc',
-    family: 'Family',
-    techniques: 'Techniques',
     characterImg: 'Character'
   };
 
@@ -86,11 +86,11 @@ function GuessForm() {
 
   const fetchDailyCharacter = async () => {
     try {
-      const response = await fetch("https://eisi-back.onrender.com/character/daily");
+      const response = await fetch("https://cote-back.onrender.com/character/daily");
       const data = await response.json();
       setDailyCharacter(data);
 
-      const lastCharacterResponse = await fetch("https://eisi-back.onrender.com/character/last");
+      const lastCharacterResponse = await fetch("https://cote-back.onrender.com/character/last");
       const lastCharacterData = await lastCharacterResponse.json();
       setLastCharacter(lastCharacterData);
 
@@ -164,7 +164,7 @@ function GuessForm() {
 
     try {
       // Busca nomes com correspondência parcial para sugestões
-      const response = await fetch(`https://eisi-back.onrender.com/character?name=${query}&exactMatch=false`);
+      const response = await fetch(`https://cote-back.onrender.com/character?name=${query}&exactMatch=false`);
       const data = await response.json();
   
       if (data && Array.isArray(data)) {
@@ -196,7 +196,7 @@ function GuessForm() {
   const fetchCharacterDetails = async (name) => {
     try {
       // Busca detalhes do personagem com correspondência exata
-      const response = await fetch(`https://eisi-back.onrender.com/character?name=${name}&exactMatch=true`);
+      const response = await fetch(`https://cote-back.onrender.com/character?name=${name}&exactMatch=true`);
       const data = await response.json();
       if (data && data.length > 0) {
         setSelectedCharacter(data[0]);
@@ -245,13 +245,13 @@ function GuessForm() {
       }
 
       const characteristics = [
-        'gender', 'filiation', 'race', 'hair_color', 'eye_color', 'introducion_arc', 'family', 'techniques'
+        'gender', 'filiation', 'occupation', 'age', 'year', 'hair_color', 'eye_color', 'studentClass'
       ];
 
       const allMatched = characteristics.every((characteristic) => {
         const userValue = selectedCharacter[characteristic];
         const dailyValue = dailyCharacter[characteristic];
-        return userValue && userValue.toLowerCase() === dailyValue.toLowerCase();
+        return userValue && userValue === dailyValue;
       });
 
       const newComparison = {
@@ -344,7 +344,7 @@ function GuessForm() {
   const { selectedCharacter, dailyCharacter } = comparison;
 
   const characteristics = [
-    'characterImg', 'gender', 'filiation', 'race', 'hair_color', 'eye_color', 'introducion_arc', 'family', 'techniques'
+    'characterImg', 'gender', 'filiation', 'occupation', 'age', 'year', 'hair_color', 'eye_color', 'studentClass', 
   ];
 
   return (
@@ -365,7 +365,7 @@ function GuessForm() {
           }
 
           // Verifica correspondência exata
-          const isExactMatch = userValue && dailyValue && userValue.toLowerCase() === dailyValue.toLowerCase();
+          const isExactMatch = userValue && dailyValue && userValue === dailyValue;
 
           // Verifica se a característica é a imagem e renderiza corretamente a tag <img>
           if (characteristic === 'characterImg') {
@@ -457,7 +457,7 @@ function GuessForm() {
       {/* Renderize os labels apenas uma vez */}
       <div className="comparison-labels">
         {[
-          'Character', 'Gender', 'Filiation', 'Race', 'Hair color', 'Eye color', 'Introduction Arc', 'Family', 'Techniques'
+          'Character', 'Gender', 'Filiation', 'Occupation', 'Age', 'Year', 'Hair color', 'Eye color', 'Student Class',
         ].map((label, index) => (
           <div key={index} className="label-item">
             <strong>{label}</strong>

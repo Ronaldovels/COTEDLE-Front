@@ -1,3 +1,13 @@
+:root {
+  --green: #2F6357;
+  --red: #591F30;
+  --gold: #B27440;
+}
+
+
+
+
+
 /* Centraliza todo o conteúdo da página */
 #formTitleContainer {
   text-align: center;
@@ -36,10 +46,10 @@ form#form_ {
 #character {
   flex: 1;
   /* Faz com que o input ocupe o espaço restante */
-  background-color: #010B40;
+  background-color: #A24651;
   padding: 10px;
   font-size: 16px;
-  border: 1px solid #FFCA4B;
+  border: 1px solid var(--gold);
   border-radius: 4px;
   display: flex;
   align-items: center;
@@ -62,6 +72,7 @@ form#form_ {
 }
 
 img#submitButtonImg {
+  width: 100px;
   rotate: 90deg;
 
 }
@@ -74,8 +85,8 @@ img#submitButtonImg {
   /* Garante que a lista apareça logo abaixo do input */
   left: 0;
   right: 0;
-  background-color: #010B40;
-  border: 1px solid #FFCA4B;
+  background-color: #A24651;
+  border: 1px solid var(--gold);
   list-style-type: none;
   padding: 0;
   max-height: 150px;
@@ -102,7 +113,7 @@ img#submitButtonImg {
 }
 
 .suggestion-item:hover {
-  background-color: #010B40;
+  background-color: #A24651;
 }
 
 /* Estilos para a comparação horizontal */
@@ -155,7 +166,7 @@ img#submitButtonImg {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #0d3d18;
+  background-color: var(--green);
   /* Verde claro */
   border-radius: 13px;
   padding: 0;
@@ -167,7 +178,7 @@ img#submitButtonImg {
   align-items: center;
   justify-content: center;
   border: 2px solid #8d0e18;
-  background-color: #5e070e;
+  background-color: var(--red);
   /* Vermelho claro */
   border-radius: 13px;
   padding: 0;
@@ -201,7 +212,7 @@ div#congratsTitleContainer {
 }
 
 .success-message {
-  background-color: #0d3d18;
+  background-color: var(--green);
   padding: 10px 10px;
   display: flex;
   flex-direction: column;
@@ -259,7 +270,7 @@ div#lastCharacterDetails {
 img#lastCharacterImg {
   width: 70px;
   height: 70px;
-  border: 1px solid #FFCA4B;
+  border: 1px solid var(--gold);
   border-radius: 10px;
 }
 
@@ -282,14 +293,14 @@ div#lastCharacterTitle {
 
 div#greenSquare {
   margin: auto;
-  background-color: #0d3d18;
+  background-color: var(--green);
   width: 32px;
   height: 32px;
 }
 
 div#redSquare {
   margin: auto;
-  background-color: #5e070e;
+  background-color: var(--red);
   width: 32px;
   height: 32px;
 }
@@ -338,7 +349,7 @@ div#characterGuessRight {
   /* Faz a imagem ocupar 100% da altura */
   object-fit: fill;
   /* Garante que a imagem cubra o contêiner, cortando as bordas se necessário */
-  border: 2px solid #010B40;
+  border: 2px solid #A24651;
   border-radius: 14px;
   /* Bordas arredondadas, opcional */
 }
@@ -355,7 +366,8 @@ div#characterGuessRight {
 }
 
 img#guessedCharacterImg {
-  outline: 1px solid #FFCA4B;
+  width: 100px;
+  outline: 1px solid var(--gold);
   border-radius: 10px;
 }
 
@@ -363,7 +375,7 @@ img#previousCharacterImg {
   width: 50px;
   height: 50px;
   border-radius: 10px;
-  border: 1px solid #FFCA4B;
+  border: 1px solid var(--gold);
 }
 
 div#previousCharacter {
